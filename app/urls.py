@@ -20,5 +20,6 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('main.urls',namespace='main')) # в этой строке указана ссылка на url из приложения main
+    path('',include('main.urls',namespace='main')), # в этой строке указана ссылка на url из приложения main
+    path('catalog/',include('goods.urls',namespace='catalog'))
 ]
