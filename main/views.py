@@ -1,12 +1,15 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from goods.models import Categories
 
 # функции представления (контроллеры)
 
 def index(request):
+    categories = Categories.objects.all() # получение названий категорий приложения goods из модели categories
     context = {
         'title':'Home - Главная',
-        'content':'Магазин мебели HOME'
+        'content':'Магазин мебели HOME',
+        'categories':categories, # проброс категорий в html документ (чтобы они отображались на странице в меню)
     } # тестовый контент передаваемый в шаблон
     return render(request, "main/index.html",context) # подключение шаблона html (из папки templates)
 
