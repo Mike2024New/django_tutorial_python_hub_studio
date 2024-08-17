@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'debug_toolbar', # установка утилиты django toolbar (отладчик)
+
     'main', # пользовательское приложение
     'goods', # подключение приложения goods
 ]
@@ -53,6 +55,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    "debug_toolbar.middleware.DebugToolbarMiddleware", # установка промежуточных слоёв отладчика
 ]
 
 ROOT_URLCONF = 'app.urls'
@@ -130,5 +134,13 @@ STATICFILES_DIRS = [
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1", # локальный ip адрес
+    # ...
+] # разрешенные ip адреса для отладчика (django debugger)
+
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField' # это поле обозначает, что в таблице id будет проставляться автоматически
