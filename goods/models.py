@@ -33,3 +33,13 @@ class Products(models.Model):
 
     def __str__(self) -> str: # переопределение базовго метода класса модели, для корректного вывода названия товара при обращении к модели
         return f'{self.name} Количество - {self.quantity}'
+    
+    def display_id(self):
+        """форматирование отбражаемых идентификаторов"""
+        return f"{self.id:05}"
+
+    def sell_price(self):
+        """возвращение отображаемой посетителю цены (применение скидки если она есть)"""
+        if self.discount:
+            return round(self.price - self.price * self.discount/100,2)
+        return self.price
